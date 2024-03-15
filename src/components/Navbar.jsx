@@ -2,7 +2,14 @@ import React from "react";
 import UserImage from "../gemini-assets/assets/user_icon.png";
 import SearchBar from "./SearchBar";
 
-const Navbar = ({ searchQuery, handleSearchChange, handleSearchClick }) => {
+const Navbar = ({
+  searchQuery,
+  handleSearchChange,
+  handleSearchClick,
+  handleVoiceSearch,
+  isListening,
+  transcript,
+}) => {
   return (
     <div className="sticky top-0 bg-white shadow-md z-10 p-4 flex items-center ">
       <h1 className="text-2xl hidden md:block">Gemini</h1>
@@ -10,6 +17,9 @@ const Navbar = ({ searchQuery, handleSearchChange, handleSearchClick }) => {
         searchQuery={searchQuery}
         handleSearchChange={handleSearchChange}
         handleSearchClick={handleSearchClick}
+        handleVoiceSearch={handleVoiceSearch}
+        isListening={isListening}
+        transcript={transcript}
       />
 
       <img

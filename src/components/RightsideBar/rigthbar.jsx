@@ -5,20 +5,47 @@ import BulbIcon from "../../gemini-assets/assets/bulb_icon.png";
 import CompassIcon from "../../gemini-assets/assets/compass_icon.png";
 import CodeIcon from "../../gemini-assets/assets/code_icon.png";
 import MessageIcon from "../../gemini-assets/assets/message_icon.png";
-
 import runChat from "../../config/gemini";
-
 import Result from "../Result";
 
-const Rigthbar = () => {
+const Rightbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [resultData, setResultData] = useState("");
   const [showResult, setShowResult] = useState(false);
   const [recentPrompt, setRecentPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [transcript, setTranscript] = useState("");
+  const [isListening, setIsListening] = useState(false);
+  let SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+
+  recognition.onstart = () => {
+    setIsListening(true);
+  };
+
+  recognition.onend = () => {
+    setIsListening(false);
+  };
+
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    console.log("Transcript:", transcript);
+    setTranscript(transcript);
+
+    onSent(transcript);
+  };
+
+  recognition.onerror = (event) => {
+    setIsListening(false);
+  };
+
+  const startRecognition = () => {
+    recognition.start();
+  };
 
   const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
+    setSearchQuery(e.target.value || transcript);
   };
 
   const onSent = async (prompt) => {
@@ -30,10 +57,15 @@ const Rigthbar = () => {
     setResultData(resultResponse);
     setIsLoading(false);
     setSearchQuery("");
+    setTranscript("");
   };
 
   const handleSearchClick = () => {
-    onSent(searchQuery);
+    onSent(searchQuery || transcript);
+  };
+
+  const handleVoiceSearch = () => {
+    startRecognition();
   };
 
   return (
@@ -42,7 +74,11 @@ const Rigthbar = () => {
         searchQuery={searchQuery}
         handleSearchChange={handleSearchChange}
         handleSearchClick={handleSearchClick}
+        transcript={transcript}
+        handleVoiceSearch={handleVoiceSearch}
+        isListening={isListening}
       />
+
       <div className="px-4 mb-6 md:px-10">
         {!showResult ? (
           <>
@@ -98,7 +134,6 @@ const Rigthbar = () => {
           </>
         ) : (
           <div className="overflow-y-auto mt-6 mx-4 md:mx-10">
-            {" "}
             <Result
               resultData={resultData}
               recentPrompt={recentPrompt}
@@ -111,4 +146,4 @@ const Rigthbar = () => {
   );
 };
 
-export default Rigthbar;
+export default Rightbar;
