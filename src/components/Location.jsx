@@ -6,6 +6,7 @@ function GeolocationComponent() {
   const [error, setError] = useState(null);
   const [placeName, setPlaceName] = useState(null);
 
+
   useEffect(() => {
     const getLocation = () => {
       if (navigator.geolocation) {

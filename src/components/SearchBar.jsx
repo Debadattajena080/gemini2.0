@@ -57,7 +57,7 @@ const SearchBar = ({
           </button>
         </div>
       </div>
-      <div className="ml-28 sm:ml-[32rem]">
+      <div className="py-2 md:ml-[32rem]">
         <GeolocationComponent />
       </div>
     </div>
