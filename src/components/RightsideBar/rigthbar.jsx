@@ -93,7 +93,7 @@ const Rightbar = () => {
                 How can I help you today?
               </span>
             </div>
-            <div className="flex flex-col mt-8 space-y-4 md:flex-row md:mt-24 mx-4 md:mx-32">
+            <div className="flex flex-col mt-8  md:flex-row md:mt-24 mx-4 md:mx-32">
               <RightCards
                 description={
                   "Suggest beautiful places to see on an upcoming road trip"

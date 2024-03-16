@@ -11,7 +11,7 @@ const Navbar = ({
   transcript,
 }) => {
   return (
-    <div className="sticky top-0 bg-white shadow-md z-10 p-4 flex items-center ">
+    <div className="sticky top-0 bg-white shadow-md z-10 px-4 pt-4 flex items-center ">
       <h1 className="text-2xl hidden md:block">Gemini</h1>
       <SearchBar
         searchQuery={searchQuery}

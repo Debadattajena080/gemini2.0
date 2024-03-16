@@ -3,7 +3,7 @@ import React from "react";
 const RightCards = ({ description, icon, onClick }) => {
   return (
     <div
-      className="bg-sky-50 mx-2 rounded-lg hover:bg-gray-100 cursor-pointer"
+      className="bg-sky-50 mx-2 my-4 rounded-lg hover:bg-gray-100 cursor-pointer"
       onClick={onClick} 
     >
       <div className="px-6 py-4">
