@@ -6,7 +6,6 @@ function GeolocationComponent() {
   const [error, setError] = useState(null);
   const [placeName, setPlaceName] = useState(null);
 
-
   useEffect(() => {
     const getLocation = () => {
       if (navigator.geolocation) {
@@ -49,15 +48,17 @@ function GeolocationComponent() {
     reverseGeocode();
   }, [latitude, longitude]);
 
+  console.log("PlaceName", placeName);
+
   return (
     <div>
       {error && <p>Error: {error}</p>}
       {latitude && longitude && (
         <p>
           {placeName && (
-            <p className="flex items-center font-semibold">
-              <span className=" text-xl mr-1">•</span>{" "}
-              <span className="text-xs">{placeName}</span>
+            <p className="flex items-center font-semibold text-gray-600">
+              <span className=" text-2xl mr-1">•</span>{" "}
+              <span className="text-sm">{placeName}</span>
             </p>
           )}
         </p>

@@ -1,4 +1,3 @@
-
 const {
   GoogleGenerativeAI,
   HarmCategory,
@@ -43,6 +42,7 @@ async function runChat(prompt) {
     safetySettings,
     history: [],
   });
+
 
   const result = await chat.sendMessage(prompt);
   const response = result.response;

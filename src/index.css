@@ -46,3 +46,23 @@ code {
     transform: scale(1);
   }
 }
+.leftbar {
+  position: fixed;
+  left: -300px;
+  top: 5rem;
+  bottom: 0;
+  width: 300px;
+  background-color: #f0f0f0;
+  transition: left 0.5s ease;
+  z-index: 100;
+}
+
+.leftbar.menu-open {
+  left: 0;
+}
+
+@media (max-width: 768px) {
+  .leftbar {
+    top: 4.5rem; /* Adjust top position to 0 for mobile view */
+  }
+}

@@ -1,6 +1,8 @@
 import React from "react";
 import UserImage from "../gemini-assets/assets/user_icon.png";
 import SearchBar from "./SearchBar";
+import { IoIosArrowDropleftCircle } from "react-icons/io";
+import { IoIosArrowDroprightCircle } from "react-icons/io";
 
 const Navbar = ({
   searchQuery,
@@ -9,10 +11,21 @@ const Navbar = ({
   handleVoiceSearch,
   isListening,
   transcript,
+  toggleMenu,
+  menuOpen,
 }) => {
   return (
-    <div className="sticky top-0 bg-white shadow-md z-10 px-4 pt-4 flex items-center ">
-      <h1 className="text-2xl hidden md:block">Gemini</h1>
+    <div className="sticky top-0 bg-white shadow-md z-10 py-4 px-4 flex items-center ">
+      {menuOpen ? (
+        <button onClick={toggleMenu}>
+          <IoIosArrowDropleftCircle className="text-2xl text-sky-400 mt-1" />
+        </button>
+      ) : (
+        <button  onClick={toggleMenu}>
+          <IoIosArrowDroprightCircle className="text-2xl text-sky-400 mt-1" />
+        </button>
+      )}
+      <h1 className="text-2xl hidden ml-4 md:block">Gemini</h1>
       <SearchBar
         searchQuery={searchQuery}
         handleSearchChange={handleSearchChange}

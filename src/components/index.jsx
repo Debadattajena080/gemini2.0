@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Rigthbar from "./RightsideBar/rigthbar.jsx";
-// import Leftbar from "./LeftsideBar/leftbar.jsx";
+import Leftbar from "./LeftsideBar/leftbar.jsx";
 
-const index = () => {
+const Index = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
   return (
     <div className="flex">
       <div className="">
-        {/* <Leftbar /> */}
+        <Leftbar menuOpen={menuOpen} />
       </div>
       <div className="flex-1">
-        <Rigthbar />
+        <Rigthbar toggleMenu={toggleMenu} menuOpen={menuOpen} />
       </div>
     </div>
   );
 };
 
-export default index;
+export default Index;
