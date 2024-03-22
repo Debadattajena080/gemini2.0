@@ -1,6 +1,6 @@
 import React from "react";
 import MicIcon from "../gemini-assets/assets/mic_icon.png";
-import GalleryIcon from "../gemini-assets/assets/gallery_icon.png";
+// import GalleryIcon from "../gemini-assets/assets/gallery_icon.png";
 import SendIcon from "../gemini-assets/assets/send_icon.png";
 
 const SearchBar = ({
@@ -46,13 +46,13 @@ const SearchBar = ({
             alt="MicIcon"
           />
         </button>
-        <button type="submit" className="absolute top-3 right-20 mr-2">
+        {/* <button type="submit" className="absolute top-3 right-20 mr-2">
           <img
             className="text-gray-600 h-5 w-5 fill-current"
             src={GalleryIcon}
             alt="GalleryIcon"
           />
-        </button>
+        </button> */}
       </div>
     </div>
   );
